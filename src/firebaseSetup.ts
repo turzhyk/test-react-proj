@@ -2,8 +2,9 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import {Firestore, getFirestore} from "firebase/firestore"
 
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAQG7fcQp_0Y8zT9sjosFPvT5bTseksN0c",
+    apiKey: process.env.REACT_APP_FB_KEY,
     authDomain: "tsx-test-project.firebaseapp.com",
     projectId: "tsx-test-project",
     storageBucket: "tsx-test-project.appspot.com",
@@ -12,6 +13,7 @@ const firebaseConfig = {
 }; 
 
 firebase.initializeApp(firebaseConfig);
+console.log(process.env)
 
 export const auth = firebase.auth();
 export const db = getFirestore();

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as BrowserRouter} from "react-router-dom";
 import Main from "./Main";
 import { AuthProvider } from "./AuthProvider/AuthProvider";
 import { createRoot } from "react-dom/client";
