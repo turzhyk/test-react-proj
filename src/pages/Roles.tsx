@@ -20,6 +20,7 @@ export const Roles = () => {
   };
   useEffect(() => {
     fetch();
+    
   }, []);
   const getRolesList = (isAdmin: boolean) => {
     return isAdmin ? (

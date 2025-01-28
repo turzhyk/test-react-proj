@@ -178,108 +178,110 @@ export function Account() {
       </div>
     );
   };
-  return (
-    <>
-      {id === auth.currentUser?.uid ? <h1>My account</h1> : <h1>Account</h1>}
+  if (auth.currentUser == null) return <h1>You must be logged in</h1>;
+  else
+    return (
+      <>
+        {id === auth.currentUser?.uid ? <h1>My account</h1> : <h1>Account</h1>}
 
-      <div className="panel-account panel-rounded panel-shadow">
-        <img
-          className="img-circle panel-shadow"
-          src={userData.picUrl}
-          width="128"
-          height="128"
-          onClick={handleOnEdit}
-        />
-        {editingField === "all" ? (
-          <input
-            style={{ width: "83%", marginLeft: "35px" }}
-            type="text"
-            value={userData.picUrl}
-            name="picUrl"
-            onChange={handleChange}
+        <div className="panel-account panel-rounded panel-shadow">
+          <img
+            className="img-circle panel-shadow"
+            src={userData.picUrl}
+            width="128"
+            height="128"
+            onClick={handleOnEdit}
           />
-        ) : (
-          <></>
-        )}
-        {editingField === "all" ? (
-          <div className="panel-account-topEdit">
-            <div>
-              <span
-                className="account-editField text-align-left"
-                style={{ marginLeft: "10px" }}
-              >
-                Name:
-              </span>
-              <input
-                type="text"
-                value={userData.name}
-                style={{ width: "auto" }}
-                name="name"
-                onChange={handleChange}
-              />
+          {editingField === "all" ? (
+            <input
+              style={{ width: "83%", marginLeft: "35px" }}
+              type="text"
+              value={userData.picUrl}
+              name="picUrl"
+              onChange={handleChange}
+            />
+          ) : (
+            <></>
+          )}
+          {editingField === "all" ? (
+            <div className="panel-account-topEdit">
+              <div>
+                <span
+                  className="account-editField text-align-left"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Name:
+                </span>
+                <input
+                  type="text"
+                  value={userData.name}
+                  style={{ width: "auto" }}
+                  name="name"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <span
+                  className=" account-editField text-align-left"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Surname:
+                </span>
+                <input
+                  type="text"
+                  value={userData.surname}
+                  style={{ width: "auto" }}
+                  name="surname"
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div>
-              <span
-                className=" account-editField text-align-left"
-                style={{ marginLeft: "10px" }}
-              >
-                Surname:
-              </span>
-              <input
-                type="text"
-                value={userData.surname}
-                style={{ width: "auto" }}
-                name="surname"
-                onChange={handleChange}
-              />
+          ) : (
+            <h2 className="pointer" onClick={() => setEditingField("all")}>
+              {userData.name} {userData.surname}
+            </h2>
+          )}
+          <hr />
+          <div className="panel-account-content">
+            <div className="panel-account-parameter">
+              <span className="account-editField">AuthID: </span>
+              {userData.id}
             </div>
+            <div className="panel-account-parameter">
+              <span className="account-editField">Email: </span>
+              {userData.email}
+            </div>
+            {companyField()}
+            {dobField()}
+            {bioField()}
+            <br />
+            <br />
           </div>
-        ) : (
-          <h2 className="pointer" onClick={() => setEditingField("all")}>
-            {userData.name} {userData.surname}
-          </h2>
-        )}
-        <hr />
-        <div className="panel-account-content">
-          <div className="panel-account-parameter">
-            <span className="account-editField">AuthID: </span>
-            {userData.id}
-          </div>
-          <div className="panel-account-parameter">
-            <span className="account-editField">Email: </span>
-            {userData.email}
-          </div>
-          {companyField()}
-          {dobField()}
-          {bioField()}
-          <br />
-          <br />
+          {editingField !== "" ? (
+            <div className="centered">
+              <button
+                className={canSave ? "" : "innactive"}
+                onClick={saveChanges}
+              >
+                Save
+              </button>
+              <button
+                className="red panel-shadow"
+                onClick={() => {
+                  setEditingField("");
+                  resetChanges();
+                }}
+              >
+                Revert
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+          {isAdmin(getAuthUser()?.id || "") && (
+            <RoleDropdown x={0} y={0} current={0} cb={hanldeRoleChange} />
+          )}
         </div>
-        {editingField !== "" ? (
-          <div className="centered">
-            <button
-              className={canSave ? "" : "innactive"}
-              onClick={saveChanges}
-            >
-              Save
-            </button>
-            <button
-              className="red panel-shadow"
-              onClick={() => {
-                setEditingField("");
-                resetChanges();
-              }}
-            >
-              Revert
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
-        {isAdmin(getAuthUser()?.id || "") && (
-          <RoleDropdown x={0} y={0} current={0} cb={hanldeRoleChange} />
-        )}
-      </div>
-    </>
-  );
+      </>
+    );
 }

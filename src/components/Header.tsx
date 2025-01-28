@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
@@ -6,9 +6,13 @@ import "firebase/compat/auth";
 import { auth } from "../firebaseSetup";
 import { useNavigate } from "react-router-dom";
 import { getUserData } from "../store/UsersManager";
-
+import { useLocation } from "react-router-dom";
 
 export function Header() {
+  const location = useLocation();
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location]);
   //   let logText: string = "logged out";
   let [displayName, setDisplayName] = useState("");
 
@@ -64,9 +68,7 @@ export function Header() {
           <Link to="/" className="header-button">
             <div
               className={
-                window.location.pathname === "/"
-                  ? "text-extraBold key_color"
-                  : ""
+                location.pathname === "/" ? "text-extraBold key_color" : ""
               }
             >
               Home
@@ -76,9 +78,7 @@ export function Header() {
           <Link to="/users" className="header-button">
             <div
               className={
-                window.location.pathname === "/users"
-                  ? "text-extraBold key_color"
-                  : ""
+                location.pathname === "/users" ? "text-extraBold key_color" : ""
               }
             >
               Users
@@ -88,7 +88,7 @@ export function Header() {
           <Link to="/sign_in" className="header-button">
             <div
               className={
-                window.location.pathname === "/sign_in"
+                location.pathname === "/sign_in"
                   ? "text-extraBold key_color"
                   : ""
               }
@@ -100,7 +100,7 @@ export function Header() {
           <Link to="/events" className="header-button">
             <div
               className={
-                window.location.pathname === "/events"
+                location.pathname === "/events"
                   ? "text-extraBold key_color"
                   : ""
               }
@@ -112,7 +112,7 @@ export function Header() {
           <Link to="/my-account" className="header-button">
             <div
               className={
-                window.location.pathname === "/my-account"
+                location.pathname === "/my-account"
                   ? "text-extraBold key_color"
                   : ""
               }
@@ -124,9 +124,7 @@ export function Header() {
           <Link to="/roles" className="header-button">
             <div
               className={
-                window.location.pathname === "/roles"
-                  ? "text-extraBold key_color"
-                  : ""
+                location.pathname === "/roles" ? "text-extraBold key_color" : ""
               }
             >
               Roles

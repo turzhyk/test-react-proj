@@ -33,6 +33,7 @@ export function Events() {
   };
   const getEventList = () => {
     return st.map((item, index) => {
+      
       const author = getUser(item.authorId);
       return (
         <EventItem

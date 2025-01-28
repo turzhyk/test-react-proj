@@ -188,7 +188,16 @@ h1 {
   flex: auto;
   position: relative;
 }
+.login-input {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex: auto;
+}
 .signin-input span {
+  line-height: 60px;
+}
+.login-input span {
   line-height: 60px;
 }
 .centered {
@@ -285,14 +294,15 @@ h1 {
   margin-right: 80px;
 }
 .event-item {
-  width: 353px;
   height: 166px;
+  min-width: 270px;
   border-radius: 12px;
   margin: 10px;
   transition-duration: 150ms;
   animation-duration: 0.2s;
   animation-name: show;
 }
+
 .event-item:hover {
   /* box-shadow: 0px 0px 0px 5px #5350e1; */
   /* cursor: pointer; */
@@ -611,24 +621,23 @@ button.innactive {
 .create_event-holder.hidden {
   display: none;
 }
-.create_event-input{
+.create_event-input {
   width: initial;
   margin: 5px 0px;
 }
-.input-head{
+.input-head {
   margin: 0px 10px;
   display: flex;
   margin-bottom: 0px;
   justify-content: space-between;
 }
-.input-head > i{
+.input-head > i {
   color: #8d8d8d;
 }
-.input-head-alert-text{
+.input-head-alert-text {
   color: #9a1d1d;
-  
 }
-.increment-buttons{
+.increment-buttons {
   height: 40px;
   width: 35px;
   background-color: #e3e3e3;
@@ -638,17 +647,16 @@ button.innactive {
   margin-top: 10px;
   margin-right: 10px;
 }
-.increment-buttons > div{
+.increment-buttons > div {
   width: 100%;
   height: 50%;
   cursor: pointer;
 }
-.increment-buttons > div:hover{
+.increment-buttons > div:hover {
   background-color: #5350e1;
 }
-.add_event-button{
+.add_event-button {
   cursor: pointer;
-  width: 353px;
   height: 166px;
   margin: 10px;
   background-color: #5350e1;
@@ -658,7 +666,7 @@ button.innactive {
   font-weight: 600;
   text-align: center;
 }
-.add_event-button>div{
+.add_event-button > div {
   background-color: #7978eb;
   color: #5350e1;
   font-size: 77px;
@@ -668,10 +676,26 @@ button.innactive {
   border-radius: 50%;
   margin: 15px auto;
 }
-.add_event-button:hover{
+.add_event-button:hover {
   transform: scale(1.02, 1.02);
 }
-.role-tag{
+/* @media (min-width: 1800px) {
+  .event-item {
+    width: 353px;
+  }
+  .add_event-button{
+    width: 353px;
+  }
+}
+@media (min-width: 1500px) {
+  .event-item {
+    width: 300px;
+  }
+  .add_event-button{
+    width: px;
+  }
+} */
+.role-tag {
   background-color: white;
   color: black;
   font-size: 12px;
@@ -680,10 +704,10 @@ button.innactive {
   padding: 5px 10px;
   height: fit-content;
 }
-.roles-container>*{
+.roles-container > * {
   margin: 3px;
 }
-.panel-role{
+.panel-role {
   background-color: #eef0f3;
   border-radius: 12px;
   padding: 10px;
@@ -695,37 +719,37 @@ button.innactive {
   animation-duration: 0.2s;
   animation-name: show;
 }
-.panel-role-container{
+.panel-role-container {
   display: flex;
   margin: 0px 10px;
 }
-.panel-role-container>label{
+.panel-role-container > label {
   margin-top: 10px;
 }
-.panel-role-input{
+.panel-role-input {
   display: flex;
   justify-content: space-between;
 }
-.input-color{
+.input-color {
   width: 120px;
   height: 20px;
   border-radius: 50%;
   padding: 0px;
 }
 
-.dropdown{
+.dropdown {
   padding: 10px;
   border-radius: 12px;
-  
+
   width: 100px;
   position: absolute;
   height: auto;
   top: 190px;
 }
-.dropdown-head{
+.dropdown-head {
   padding: 5px 0px;
 }
-.dropdown li{
+.dropdown li {
   list-style: none;
   height: 25px;
   border-radius: 12px;
@@ -733,10 +757,9 @@ button.innactive {
   padding: 5px 0px;
   cursor: pointer;
 }
-.dropdown li > *{
- margin: 0px;
- 
+.dropdown li > * {
+  margin: 0px;
 }
-.dropdown li:hover{
+.dropdown li:hover {
   background-color: #e4e4e4;
 }

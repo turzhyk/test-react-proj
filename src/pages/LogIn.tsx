@@ -39,20 +39,20 @@ export function Login() {
       <h1 style={{ marginTop: "0px" }}>Log in</h1>
       <hr style={{ width: "10%" }} />
       <br />
-      <div className="signin-input">
-        <span> Enter email:</span>
+      <div className="login-input">
+        <span>Enter email:</span>
         <input
-          style={{ width: "65%" }}
+          style={{ width: "65%"}}
           type="text"
           value={email}
           id="email"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="signin-input">
+      <div className="login-input">
         <span>Enter password:</span>
         <input
-          style={{ width: "65%" }}
+          style={{ width: "65%"}}
           type="password"
           value={pwd}
           id="pwd"

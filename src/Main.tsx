@@ -82,7 +82,7 @@ function Main() {
         element={
           <>
             <Header />
-            {auth.currentUser == null ? <></> : <Account />}
+            <Account />
           </>
         }
       />
