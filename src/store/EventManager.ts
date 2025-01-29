@@ -1,5 +1,5 @@
 import React from "react";
-import { getDocs, collection, setDoc, doc } from "firebase/firestore";
+import { getDocs, collection, setDoc, doc, arrayUnion, arrayRemove, updateDoc} from "firebase/firestore";
 import { db } from "../firebaseSetup";
 import { time } from "console";
 import { decodedTextSpanIntersectsWith } from "typescript";
@@ -11,6 +11,7 @@ export interface IEvent {
   time: string;
   authorId: string;
   members: string[];
+  location: string;
 }
 let events: IEvent[];
 export const getEvents = async () => {
@@ -28,6 +29,7 @@ const getEventData = async (id: string | undefined) => {
         time: doc.data().time,
         authorId: doc.data().authorId,
         members: doc.data().members,
+        location: doc.data().location
       }));
       events = newData.sort((obj1, obj2) => {
         const timeA = new Date(obj1.date + " " + obj1.time);
@@ -39,6 +41,7 @@ const getEventData = async (id: string | undefined) => {
   };
   await fetchPost();
   if (id !== undefined) return events.find((el) => el.id === id);
+
 };
 export const addEvent = async (data: any) => {
   Object.keys(data).forEach((key) =>
@@ -47,3 +50,12 @@ export const addEvent = async (data: any) => {
   const today = new Date().getTime();
   await setDoc(doc(db, "events", today.toString()), data);
 };
+export const addMember = async(user:string, event:string) =>
+{
+  const docRef = doc(db, 'events', event);
+  await updateDoc(docRef, {members: arrayUnion(user)});
+}
+export const removeMember = async(user:string, event:string) =>{
+  const docRef = doc(db, 'events', event);
+  await updateDoc(docRef, {members: arrayRemove(user)});
+}

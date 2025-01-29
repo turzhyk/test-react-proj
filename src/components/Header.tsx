@@ -120,8 +120,8 @@ export function Header() {
               Account
             </div>
           </Link>
-          <div className="header-separator"></div>
-          <Link to="/roles" className="header-button">
+          <div className="header-separator" style={{display: "none"}}></div>
+          <Link to="/roles" className="header-button" style={{display: "none"}}>
             <div
               className={
                 location.pathname === "/roles" ? "text-extraBold key_color" : ""

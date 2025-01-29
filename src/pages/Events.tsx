@@ -6,6 +6,7 @@ import { CreateEvent } from "../components/CreateEvent";
 import { convertToObject } from "typescript";
 import { getUser } from "../store/UsersManager";
 import { AlertPopup } from "../components/AlertPopup";
+
 export function Events() {
   const [isLoading, setIsLoading] = useState(false);
   const [addedEvent, setAddedEvent] = useState(false);
@@ -33,7 +34,7 @@ export function Events() {
   };
   const getEventList = () => {
     return st.map((item, index) => {
-      
+
       const author = getUser(item.authorId);
       return (
         <EventItem
